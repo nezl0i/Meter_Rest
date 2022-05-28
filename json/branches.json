@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Адыгейские ЭС",
+    "small_name": "АдЭС",
+    "description": ""
+  },
+  {
+    "name": "Армавирские ЭС",
+    "small_name": "АрмЭС",
+    "description": ""
+  },
+  {
+    "name": "Краснодарские ЭС",
+    "small_name": "КЭС",
+    "description": ""
+  },
+    {
+    "name": "Лабинские ЭС",
+    "small_name": "ЛабЭС",
+    "description": ""
+  },
+    {
+    "name": "Ленинградские ЭС",
+    "small_name": "ЛенЭС",
+    "description": ""
+  },
+    {
+    "name": "Славянские ЭС",
+    "small_name": "СлЭС",
+    "description": ""
+  },
+    {
+    "name": "Сочинские ЭС",
+    "small_name": "СочЭС",
+    "description": ""
+  },
+    {
+    "name": "Тимашевские ЭС",
+    "small_name": "ТимЭС",
+    "description": ""
+  },
+    {
+    "name": "Тихорецкие ЭС",
+    "small_name": "ТихЭС",
+    "description": ""
+  },
+    {
+    "name": "Усть-Лабинские ЭС",
+    "small_name": "УЛЭС",
+    "description": ""
+  },
+    {
+    "name": "Юго-Западные ЭС",
+    "small_name": "ЮЗЭС",
+    "description": ""
+  },
+  {
+    "name": "ВСЕГО",
+    "small_name": "ВСЕГО",
+    "description": ""
+  }
+]

@@ -1,0 +1,49 @@
+
+#   sudo apt-get install postgresql postgresql-server-dev-9.3
+#   sudo apt-get install postgresql postgresql-server-dev-9.5 postgresql-contrib
+#   sudo apt-get install --reinstall libpq-dev
+#   pip3 install psycopg2
+
+# Заходим в консоль Postgre
+#   sudo -u postgres psql postgres
+
+# Задаем пароль администратора БД, если до этого не создавали
+# \password postgres
+
+# Создаем и настраиваем пользователя при помощи которого будем соединяться с базой данных из Django
+# (ну очень плохая практика все делать через ... суперпользователя).
+# Заодно указываем значения по умолчанию для кодировки, уровня изоляции транзакций и временного пояса.
+#   create user user_name with password 'password';
+#   alter role user_name set client_encoding to 'utf8';
+#   alter role user_name set default_transaction_isolation to 'read committed';
+#   alter role user_name set timezone to 'UTC';
+
+#   Временной пояс можно указать свой, согласно тому, который вы прописываете в settings.py проекта.
+#   А про страшное определение уровень изоляции транзакций, если оно вам не знакомо, лучше все таки
+#   прочитать из учебника по SQL - пригодится.
+
+#   Создаем базу для нашего проекта
+#   create database django_db owner user_name;
+
+#   Выходим из консоли
+#   \q
+
+#   В окружении проекта устанавливаем бэкэнд для PostgreSQL
+#   pip3 install psycopg2
+
+#   Последний наш шаг - настроить раздел DATABASES конфигурационного файла проекта settings.py
+
+#   'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#   'NAME': 'django_db',
+#   'USER' : 'user_name',
+#   'PASSWORD' : 'password',
+#   'HOST' : '127.0.0.1',
+#   'PORT' : '5432',
+
+
+
+#   ./manage.py migrate,
+#   ./manage.py createsuperuser
+#   ./manage runserver.
+
+#	sudo docker run -d -p 6379:6379 redis

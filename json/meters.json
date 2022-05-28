@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Матрица",
+    "work_name": "ООО 'Матрица'",
+    "description": ""
+  },
+  {
+    "name": "Матрица SFSK",
+    "work_name": "ООО 'Матрица'",
+    "description": ""
+  },
+  {
+    "name": "Матрица FSK",
+    "work_name": "ООО 'Матрица'",
+    "description": ""
+  },
+  {
+    "name": "РиМ",
+    "work_name": "АО 'РиМ'",
+    "description": ""
+  },
+  {
+    "name": "МИР",
+    "work_name": "НПО 'МИР'",
+    "description": ""
+  },
+  {
+    "name": "Энергомера",
+    "work_name": "АО 'Энергомера'",
+    "description": ""
+  },
+  {
+    "name": "Квант(Миртек)",
+    "work_name": "АО ГК 'Системы и Технологии'",
+    "description": ""
+  },
+  {
+    "name": "СЭТ(ПСЧ)",
+    "work_name": "АО 'ННПО им. М.В.Фрунзе'",
+    "description": ""
+  },
+  {
+    "name": "Меркурий",
+    "work_name": "НПК 'Инкотекс'",
+    "description": ""
+  },
+  {
+    "name": "Альфа",
+    "work_name": "ООО 'Эльстер Метроника'",
+    "description": ""
+  },
+  {
+    "name": "ИТОГО",
+    "work_name": "ИТОГО",
+    "description": ""
+  }
+
+]
