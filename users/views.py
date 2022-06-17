@@ -15,7 +15,7 @@ class UsersView(viewsets.ModelViewSet):
     """
     Просмотр и редактирование пользователей
     """
-    queryset = User.objects.all()
+    queryset = User.objects.all().order_by('id')
     serializer_class = UserViewSerializer
     pagination_class = UsersModelPagination
     permission_classes = (IsAdminUser,)
@@ -25,7 +25,7 @@ class RegistrationAPIView(viewsets.ModelViewSet):
     """
     Регистрация пользователя
     """
-    queryset = User.objects.filter(is_active=True)
+    queryset = User.objects.filter(is_active=True).order_by('id')
     permission_classes = (AllowAny,)
     serializer_class = RegistrationSerializer
     pagination_class = UsersModelPagination

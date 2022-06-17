@@ -25,10 +25,14 @@ def simple_upload(request):
     if request.method == 'POST':
         rating_resource = RatingResource()
         dataset = Dataset()
-        new_rating = request.FILES['myfile']
+        if not request.FILES:
+            messages.error(request, 'Файл не выбран')
+            return render(request, 'meters/upload.html')
+        else:
+            new_rating = request.FILES['myfile']
 
         if not new_rating.name.endswith('xlsx'):
-            messages.info(request, 'Неверный формат файла')
+            messages.error(request, 'Неверный формат файла')
             return render(request, 'meters/upload.html')
 
         tmp_date = new_rating.name.split('.')[:3]

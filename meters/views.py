@@ -10,7 +10,7 @@ class RatingModelPagination(PageNumberPagination):
 
 class MeterModelViewSet(ModelViewSet):
 
-    queryset = Meter.objects.all()
+    queryset = Meter.objects.get_queryset().order_by('id')
     serializer_class = MeterModelSerializer
     pagination_class = RatingModelPagination
 
@@ -21,7 +21,7 @@ class MeterModelViewSet(ModelViewSet):
 
 class BranchModelViewSet(ModelViewSet):
 
-    queryset = Branches.objects.all()
+    queryset = Branches.objects.get_queryset().order_by('id')
     serializer_class = BranchModelSerializer
     pagination_class = RatingModelPagination
 
@@ -31,7 +31,7 @@ class BranchModelViewSet(ModelViewSet):
 
 
 class RatingModelViewSet(ModelViewSet):
-    queryset = Rating.objects.all()
+    queryset = Rating.objects.get_queryset().order_by('id')
     serializer_class = RatingModelSerializer
     pagination_class = RatingModelPagination
 
