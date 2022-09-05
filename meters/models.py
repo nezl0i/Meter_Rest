@@ -36,5 +36,10 @@ class Rating(models.Model):
 
     objects = models.Manager()
 
-    def __str__(self):
-        return f'Дата опроса {self.pool_date}'
+    @staticmethod
+    def date_pools():
+        date_ = Rating.objects.all().select_related('branch').values('pool_date').distinct().order_by('-pool_date')
+        return date_
+
+    # def __str__(self):
+    #     return f'Дата опроса {self.pool_date}'

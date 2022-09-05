@@ -47,3 +47,7 @@
 #   ./manage runserver.
 
 #	sudo docker run -d -p 6379:6379 redis
+
+\l (или SELECT datname FROM pg_database;) - список БД
+\c wildberies - подключиться к БД
+ \dt - список таблиц

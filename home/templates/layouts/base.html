@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>
+        ПАО "Россети Кубань" - {% block title %}{% endblock %}
+    </title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+{#		<script src="{% static 'js/html5shiv.js' %}"></script>#}
+{#		<script src="{% static 'js/respond.min.js' %}"></script>#}
+		<![endif]-->
+    <!-- Meta -->
+{#    <meta charset="utf-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">#}
+{#    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>#}
+    {#    <link rel="canonical" href="https://appseed.us/admin-dashboards/django-dashboard-dattaable">#}
+    <!-- Favicon icon -->
+    <link rel="icon" href="{% static 'assets/images/favicon.ico' %}" type="image/x-icon">
+    <!-- fontawesome icon -->
+    <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome/css/fontawesome-all.min.css' %}">
+    <!-- animation css -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/animation/css/animate.min.css' %}">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/google-fonts.css' %}">
+    {#    <link rel="stylesheet" href="{% static  'assets/css/bootstrap/bootstrap.min.css' %}"/>#}
+    {#    <link rel="stylesheet" href="{% static 'assets/css/bootstrap/bootstrap-datetimepicker.min.css' %}"/>#}
+    {##}
+    {#    <!-- 3. Подключить библиотеку jQuery -->#}
+    {#        <script src="{% static 'js/rating.js' %}"></script>#}
+    {#        <script src="{% static 'js/meters.js' %}"></script>#}
+    {# <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>#}
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="{% static 'assets/css/google-icons.css' %}">
+  <!-- CSS Files -->
+{#  <link rel="stylesheet" href="{% static 'assets/css/material-dashboard.css' %}">#}
+    <link rel="stylesheet" href="{% static 'assets/css/soft-ui-dashboard.css' %}">
+
+    {#    <!-- 4. Подключить библиотеку moment -->#}
+    {#    <script src="{% static 'assets/js/moment-with-locales.min.js' %}"></script>#}
+    {#    <!-- 5. Подключить js-файл фреймворка Bootstrap 3 -->#}
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    {#    <!-- 6. Подключить js-файл библиотеки Bootstrap 3 DateTimePicker -->#}
+    {#    <script src="{% static 'assets/js/bootstrap-datetimepicker.min.js' %}"></script>#}
+    <!-- Specific CSS goes HERE -->
+    {% block stylesheets %}{% endblock stylesheets %}
+
+</head>
+<body class="g-sidenav-show  bg-gray-100">
+
+
+<!-- [ Pre-loader ] start -->
+{#<div class="loader-bg">#}
+{#    <div class="loader-track">#}
+{#        <div class="loader-fill"></div>#}
+{#    </div>#}
+{#</div>#}
+
+<!-- Top Bar -->
+{#<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">#}
+
+
+<!-- SideBar -->
+{% include 'includes/sidebar.html' %}
+
+
+<div class="pcoded-main-container">
+    <div class="pcoded-wrapper">
+        <div class="pcoded-content">
+            <div class="pcoded-inner-content">
+                <div class="main-body">
+                    <div class="page-wrapper">
+                        <!-- [ Main Content ] start -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                            {% include 'includes/navigation.html' %}
+
+{#                                                <hr>#}
+{#                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link active"#}
+{#                                           href="{% url 'index' %}" role="tab">По филиалам</a>#}
+{#                                    </li>#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link"#}
+{#                                           href="{% url 'index' %}" role="tab">По приборам учета</a>#}
+{#                                    </li>#}
+{#                                    <li class="nav-item">#}
+{#                                        <a class="nav-link" data-toggle="pills"#}
+{#                                           href="{% url 'meters' %}">Contact</a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+                                <!-- элемент input с id = datetimepicker1 -->
+{#                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel"#}
+{#                                         aria-labelledby="pills-home-tab">#}
+                                        {#                                        <p class="mb-0">Consequat occaecat ullamco amet non eiusmod nostrud dolore#}
+                                        {#                                            irure incididunt est duis anim sunt officia. Fugiat velit proident aliquip#}
+                                        {#                                            nisi incididunt nostrud exercitation proident est nisi.#}
+                                        {#                                        </p>#}
+
+{#                                        <label for="exampleFormControlSelect">Дата опроса</label>#}
+{#                                        <select class="form-control" id="exampleFormControlSelect">#}
+{#                                            {% for dates in pool_date %}#}
+{#                                                <option>{{ dates.pool_date}}</option>#}
+{#                                            {% endfor %}#}
+{#                                        </select>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block content %}{% endblock content %}
+
+
+    </div>
+</div>
+{# </main>#}
+{% include 'includes/scripts.html' %}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>#}
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+{% load mathfilters %}
+{% load static %}
+<div class="pcoded-inner-content">
+    <div class="main-body rating">
+        <div class="row ">
+
+            {% for i, item in rating %}
+
+                <div class="col-md-4 col-xl-4 ">
+                    <div class="card card-background-mask-primary ">
+                        <div class="card-block">
+                            <div class="row d-flex">
+
+                                <div class="col-md-8" style="margin-bottom: 10px;">
+                                    <h5>{{ item.branch }}</h5>
+                                </div>
+
+                                <div class="col-md-4 right-col"
+                                     style="color: #800000; display: flex; justify-content: flex-end;">
+                                    Рейтинг - {{ i }}
+                                </div>
+                            </div>
+
+
+                            <div class="row d-flex align-items-center">
+                                <div class="col-9">
+                                    <h5 class="f-w-300 d-flex align-items-center m-b-0"><i
+                                            class="feather
+                                                    {% for item2 in pre_rating %}
+                                                        {% if item2.branch == item.branch %}
+                                                             {% if item.total < item2.total %}
+                                                                icon-arrow-down text-c-red
+                                                             {% elif item.total == item2.total %}
+                                                                icon-check text-c-blue
+                                                             {% else %}
+                                                                icon-arrow-up text-c-green
+                                                             {% endif %}
+                                                                f-30 m-r-10">
+
+                                                </i>
+                                                Всего - {{ item.total }}
+                                                {% if  item.total|sub:item2.total > 0 %}
+                                                    <span style="color: #006400; font-size:15px; padding-left: 10px;">
+                                                        (+{{ item.total|sub:item2.total }})
+                                                    </span>
+                                                {% elif  item.total|sub:item2.total == 0 %}
+                                                    <span style="font-size:15px; padding-left: 10px;">
+                                                        ({{ item.total|sub:item2.total }})
+                                                    </span>
+                                                {% else %}
+                                                    <span style="color: #cb0404; font-size:15px; padding-left: 10px;">
+                                                        ({{ item.total|sub:item2.total }})
+                                                    </span>
+                                                {% endif %}
+                                                </h5>
+
+                                            {% endif %}
+                                            {% endfor %}
+                                </div>
+
+                                <div class="col-9">
+                                    <h5 class="f-w-300 d-flex align-items-center m-b-0"><i
+                                            class="feather
+                                                    {% for item2 in pre_rating %}
+                                                    {% if item2.branch == item.branch %}
+                                                    {% if item.pools < item2.pools %}
+                                                        icon-arrow-down text-c-red
+                                                    {% elif item.pools == item2.pools %}
+{#                                                        icon-arrow-right text-c-blue#}
+                                                        icon-check text-c-blue
+                                                    {% else %}
+                                                        icon-arrow-up text-c-green
+                                                    {% endif %}
+                                                        f-30 m-r-10">
+                                                </i>
+                                                Опрашивается - {{ item.pools }}
+                                                {% if  item.pools|sub:item2.pools > 0 %}
+                                                    <span style="color: #006400; font-size:15px; padding-left: 10px;">
+                                                        (+{{ item.pools|sub:item2.pools }})
+                                                    </span>
+                                                {% elif  item.pools|sub:item2.pools == 0%}
+                                                    <span style="font-size:15px; padding-left: 10px;">
+                                                        ({{ item.pools|sub:item2.pools }})
+                                                    </span>
+                                                {% else %}
+                                                    <span style="color: #cb0404; font-size:15px; padding-left: 10px;">
+                                                        ({{ item.pools|sub:item2.pools }})
+                                                    </span>
+                                                {% endif %}
+
+                                                </h5>
+                                            {% endif %}
+                                            {% endfor %}
+                                </div>
+
+                                <div class="col-3 text-right" style="color: #006400;">
+                                    <p class="m-b-0">{{ item.percent|floatformat:-2 }}%</p>
+                                </div>
+                            </div>
+                            <div class="progress m-t-30" style="height: 7px;">
+                                <div class="progress-bar
+                                {% if item.percent < 95.0 %}
+                                progress-c-red
+                                {% elif item.percent < 98.0 and item.percent > 95.0 %}
+                                progress-c-yellow
+                                {% elif item.percent < 99.0 and item.percent > 95.0 %}
+                                progress-c-blue
+                                {% else %}
+                                progress-c-green
+                                {% endif %}
+                                " role="progressbar"
+                                     style="width: {{ item.percent|floatformat:0 }}%;" aria-valuenow="20"
+                                     aria-valuemin="0"
+                                     aria-valuemax="150">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{% static 'js/rating.js' %}"></script>
+{% endblock javascripts %}
+

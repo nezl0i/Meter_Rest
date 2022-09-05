@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Daily Sales",
+    "price": 249.95,
+    "percent": 30
+  },
+    {
+    "name": "Monthly Sales",
+    "price": 2.942,
+    "percent": 36
+  },
+    {
+    "name": "Yearly Sales",
+    "price": 8.638,
+    "percent": 80
+  }
+]

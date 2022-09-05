@@ -1,0 +1,155 @@
+{% load mathfilters %}
+{% load static %}
+<div class="pcoded-inner-content">
+    <div class="main-body meters">
+        <div class="row ">
+
+            {% for meter in meters %}
+
+                <div class="col-md-6 col-xl-6">
+                    <div class="card">
+                        <div class="card-block">
+                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                <div class="bg-gradient-faded-info shadow-primary border-radius-lg pt-4 pb-3">
+                                    <h6 class="text-white text-capitalize ps-3">{{ meter.name }}
+                                        ({{ meter.work_name }})</h6>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center justify-content-center mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                Филиал
+                                            </th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Всего
+                                            </th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                                Опрашивается
+                                            </th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center opacity-7 ps-2">
+                                                % опроса
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for item in rating %}
+                                            {% if item.meter_id == meter.id %}
+
+                                                <tr>
+                                                    <td>
+                                                        <div class="d-flex px-2">
+                                                            {#                                                    <div>#}
+                                                            {#                                                        <img src="/static/assets/img/small-logos/incotex.svg"#}
+                                                            {#                                                             class="avatar avatar-sm rounded-circle me-2"#}
+                                                            {#                                                             alt="spotify">#}
+                                                            {#                                                    </div>#}
+
+                                                            <div class="my-auto">
+                                                                <h6 class="mb-0 text-sm">{{ item.branch }}</h6>
+                                                            </div>
+
+                                                        </div>
+                                                    </td>
+
+                                                    <td>
+                                                        {% for item2 in pre_rating %}
+                                                            {% if item2.branch == item.branch %}
+                                                                {% if item.meter_id == item2.meter.id %}
+                                                                    <p class="text-sm font-weight-bold mb-0">{{ item.total }}
+                                                                        {% if  item.total|sub:item2.total > 0 %}
+                                                                            <span style="color: #006400; font-size:13px; padding-left: 3px; font-weight:normal">
+                                                                                    (+{{ item.total|sub:item2.total }})
+                                                                            </span>
+                                                                        {% elif  item.total|sub:item2.total == 0 %}
+
+                                                                        {% else %}
+                                                                            <span style="color: #cb0404;font-size:13px; padding-left: 3px; font-weight:normal">
+                                                                                    ({{ item.total|sub:item2.total }})
+                                                                            </span>
+                                                                        {% endif %}
+                                                                    </p>
+                                                                    </td>
+
+                                                                    <td>
+                                                                        <p class="text-sm font-weight-bold mb-0">{{ item.pools }}
+                                                                            {% if  item.pools|sub:item2.pools > 0 %}
+                                                                                <span style="color: #006400; font-size:13px; padding-left: 3px; font-weight:normal">
+                                                                                    (+{{ item.pools|sub:item2.pools }})
+                                                                            </span>
+                                                                            {% elif  item.pools|sub:item2.pools == 0 %}
+
+                                                                            {% else %}
+                                                                                <span style="color: #cb0404;font-size:13px; padding-left: 3px; font-weight:normal">
+                                                                                    ({{ item.pools|sub:item2.pools }})
+                                                                            </span>
+                                                                            {% endif %}
+                                                                        </p>
+                                                                    </td>
+
+                                                                    <td class="align-middle text-center">
+                                                                        <div class="d-flex align-items-center justify-content-center">
+                                                                            <p class="mb-0 text-xs font-weight-bold"
+                                                                               style="padding-right: 8px;">
+                                                                                {% if  item.percent|sub:item2.percent > 0 %}
+                                                                                    <span class="feather icon-arrow-up text-c-green"></span>
+                                                                                    {{ item.percent|floatformat:-2 }}%
+                                                                                {% elif  item.percent|sub:item2.percent == 0 %}
+                                                                                    <span class="feather icon-check text-c-blue"></span>
+                                                                                    {{ item.percent|floatformat:-2 }}%
+                                                                                {% else %}
+                                                                                    <span class="feather icon-arrow-down text-c-red"></span>
+                                                                                    {{ item.percent|floatformat:-2 }}%
+                                                                                {% endif %}
+                                                                            </p>
+                                                                            <div>
+                                                                                <div class="progress">
+                                                                                    <div class="progress-bar
+                                                                        {% if item.percent < 95.0 %}
+                                                                        bg-gradient-danger
+                                                                        {% elif item.percent < 98.0 and item.percent > 95.0 %}
+                                                                            bg-gradient-warning
+                                                                        {% elif item.percent < 99.0 and item.percent > 95.0 %}
+                                                                            bg-gradient-info
+                                                                        {% else %}
+                                                                        bg-gradient-success
+                                                                        {% endif %}
+                                                                        "
+                                                                                         role="progressbar"
+                                                                                         aria-valuenow="60"
+                                                                                         aria-valuemin="0"
+                                                                                         aria-valuemax="100"
+                                                                                         style="width: {{ item.percent|floatformat:0 }}%;"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                {% endif %}
+                                                            {% endif %}
+                                                        {% endfor %}
+
+                                                    {#                                            <td class="align-middle">#}
+                                                    {#                                                <button class="btn btn-link text-secondary mb-0">#}
+                                                    {#                                                    <i class="fa fa-ellipsis-v text-xs"></i>#}
+                                                    {#                                                </button>#}
+                                                    {#                                            </td>#}
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% block javascripts %}
+    <script src="{% static 'js/meters.js' %}"></script>
+{% endblock javascripts %}

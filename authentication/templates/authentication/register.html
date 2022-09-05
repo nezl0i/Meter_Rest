@@ -1,0 +1,52 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body text-center">
+            <div class="mb-4">
+                <i class="feather icon-user-plus auth-icon"></i>
+            </div>
+            <h3 class="mb-4">Регистрация</h3>
+
+            {% include "includes/muted.html"%}
+
+            <form role="form" method="post" action="">
+                {% csrf_token %}
+                <div class="input-group mb-3">
+                    {{ form.username }}
+                </div>
+
+                <span class="text-error">{{ form.username.errors }}</span>
+
+                <div class="input-group mb-3">
+                    {{ form.email }}
+                </div>
+                <span class="text-error">{{ form.email.errors }}</span>
+
+                <div class="input-group mb-4">
+                    {{ form.password1 }}
+                </div>
+                <span class="text-error">{{ form.password1.errors }}</span>
+
+                <div class="input-group mb-4">
+                    {{ form.password2 }}
+                </div>
+                <span class="text-error">{{ form.password2.errors }}</span>
+
+                <div class="form-group text-left">
+                    <div class="checkbox checkbox-fill d-inline">
+                        <input type="checkbox" name="checkbox-fill-1" id="checkbox-fill-a1" checked="">
+                        <label for="checkbox-fill-a1" class="cr"> Согласен с <a href="#">условиями</a></label>
+                    </div>
+                </div>
+                <button type="submit" name="register" class="btn btn-primary shadow-2 mb-4">Зарегистрироваться
+                </button>
+
+            </form>
+
+            <p class="mb-0 text-muted">Уже есть аккаунт? <a href="{% url 'login' %}">Вход</a></p>
+            <br/>
+            {% include 'includes/footer.html' %}
+        </div>
+    </div>
+{% endblock content %}

@@ -8,6 +8,7 @@ from backend.settings import JSON_DIR
 from .resources import RatingResource
 from tablib import Dataset
 from .models import Rating
+from django.contrib.auth.decorators import login_required
 
 
 def slice_lst(lst):
@@ -20,6 +21,7 @@ def load_json(file):
         return json.load(json_file)
 
 
+@login_required(login_url="/login/")
 def simple_upload(request):
 
     if request.method == 'POST':
